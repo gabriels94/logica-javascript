@@ -1,0 +1,55 @@
+<meta charset="UTF-8">
+
+<input/>
+<button>Compara com o meu segredo</button>
+
+<script>
+
+//a posicao do array comeca do 0 em diante, então tem que ser a quantidade do array menos 1 pra voce achar a posicao dos itens de dentro do array.
+var segredos = [5,6,7,2];
+
+
+//document.querySelector pucha funcões do mundo html para o mundo javascript
+var input = document.querySelector("input");
+input.focus();
+
+//a funcao verifica(){} serve 
+function verifica() {
+
+//dentro da funcao verifica, declaramos mais uma variavel chamada achou = false;  para quando encontrarmos o iten que queremos der um ACERTOU!, então vamos la no if(){} do ACERTOU
+// e antes do break;  colocamos um achou = true
+var achou = false;
+
+//no for voce cria uma variavel recebendo 0, coloca a condicao com o um numero a mais de itens, e depois o nome da varialvel ++ para ir adicionando mais um até sair do loop
+    for (var posicao  = 0; posicao < 4; posicao++) {
+    
+// o input.value captura o valor que foi digitado no input    
+    if (input.value == segredos [posicao]) {
+
+        alert("Você ACERTOU!");
+        achou = true;
+        break;
+    } 
+}
+//e depois do if(){} ACERTOU!, fazemos outro if, e dentro dos parenteses colocamos (achou == false), para que se o numero nao for igual ao do array, ele mostre a mensagem voce ERROU!. 
+if(achou == false) {
+    alert("Você ERROU!");
+}
+
+//o input.value = ""; serve para deixar o campo em branco depois que vc digitar e der um click no OK
+    input.value = "";
+
+//o input.focus(); serve para dar um foco no campo onde vai ser digitado    
+    input.focus();
+    
+}
+var button = document.querySelector("button");
+
+//button.onclick = verifica; ele está dizendo que ao clicar no botão ele tenha acesso ao código do verifica, mas sem os parenteses () por que queremos guardar o verifica dentro do
+//nosso button.onclick, e não executar a função novamente e por isso tem que ser fora da função verifica também
+button.onclick = verifica;
+
+
+//Aprendemos que podemos saber o tamanho do array através de: declararmos uma variavel com o nome e o array[]  exemplo: var codigos  = ["IDNOCLIP" , "IDDQD", "IDKFA"];
+//Depois usamos codigos.length
+</script>

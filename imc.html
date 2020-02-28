@@ -1,0 +1,54 @@
+<meta charset="UTF-8">
+
+<script>
+    function pulaLinha() {
+
+        document.write("<br><br>");
+    }
+
+    function mostra(frase) {
+        
+        document.write(frase);
+        pulaLinha();
+
+    }
+    
+    function calculaImc(altura,peso){
+
+        //Dos dois jeitos funciona
+
+        return peso / (altura * altura);
+        //var imc = peso / (altura * altura);
+        //return imc;
+    }
+
+    // Quem chama a função e pega o valor da função decide como vai exibir esses dados.
+    
+    //var imcFlavio = calculaImc(1.71, 73);
+    //var imcAmigo = calculaImc(1.72, 68);
+    //var totalImc = imcFlavio + imcAmigo;
+
+    //O resultado e o mesmo usando as variaveis com os nomes, ou usando uma variavel com o total, fazendo a conta dos valores
+    var totalImc = calculaImc(1.71, 73) + calculaImc(1.72,68);
+
+    document.write("A soma dos imc's é " + totalImc);
+
+
+
+
+
+    //mostra(imcFlavio);
+    //mostra(imcAmigo);
+
+    //var pesoGabriel = 65;
+    //var alturaGabriel = 1.80;
+    //var imcGabriel = pesoGabriel / (alturaGabriel * alturaGabriel);
+    //mostra ("O imc do Gabriel é " + imcGabriel);
+
+    //var pesoAmigo = 68;
+    //var alturaAmigo = 1.72;
+    //var imcAmigo = pesoAmigo / (alturaAmigo * alturaAmigo);
+    //mostra ("O imc do meu amigo é " + imcAmigo);
+
+
+</script>

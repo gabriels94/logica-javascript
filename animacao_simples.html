@@ -1,0 +1,58 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    pincel.fillStyle = 'lightgray';
+    pincel.fillRect(0, 0, 600, 400);
+
+
+    function desenhaCirculo(x, y, raio) {
+
+        pincel.fillStyle = 'black';
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * Math.PI);
+        pincel.fill();
+    }
+
+    function limpaTela() {
+
+        pincel.clearRect(0, 0, 600, 400);
+    }
+
+
+    var x = 20; // o importante é que seja declarado fora da função atualizaTela. para ela ficar incrementando + 1 ao valor da variavel, se declarada dentro da função atualizaTela ela sempre vai ter o mesmo valor
+
+    var sentido = 1;
+
+    function atualizaTela() {
+
+
+        limpaTela();
+
+        if(x > 600) {
+            sentido = -1
+        } else if (x < 0) {
+            sentido = 1;
+        }
+
+        desenhaCirculo(x, 20, 10);
+        x = x + sentido;
+    }
+
+    // Essa função recebe dois parametros, o primeiro é o nome da função que desejamos que o Javascript chame em um intervalo de tempo, o segundo parametro é esse intervalo de tempo em milissegundos.
+    setInterval(atualizaTela, 10);
+
+
+
+
+
+    //O que acabamos de solucionar é um problema de escopo de variável no mundo da programação.
+    // Uma variável pode ter um escopo de função, ou seja, só dentro da função ou ter um escopo chamado de escopo global.
+    // Quando declarada fora de uma função, a variável é acessível por qualquer outra função do nosso programa.
+
+
+
+
+</script>

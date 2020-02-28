@@ -1,0 +1,103 @@
+<meta charset="UTF-8">
+
+<input />
+
+<button>Compara com o meu segredo</button>
+
+<script>
+
+    function sorteia() {
+
+        return Math.round(Math.random() * 10);
+    }
+
+    function sorteiaNumeros(quantidade) {
+
+        //aqui a variavel não recebe nada e pode ter o mesmo nome da variavel que está fora da função pois ela so funcionara aqui dentro, a não ser que voce de um return fora do function
+        var segredos = [];
+
+        //aqui a variavel recebe um numero, para o programa saber de qual numero ele deve começar a comparar com a quantidade maxima de numeros
+        var numero = 1;
+
+        //aqui se o numero 1 for menor ou igual a quantidade de numeros que colocamos no sorteiaNumeros, se for menor, então ele vai adiciona mais um numero aleatorio até chegar no numero que foi declarado na variavel sorteiaNumero
+        while (numero <= quantidade) {
+
+            var numeroAleatorio = sorteia();
+
+            //aqui ele vai verificar se o numeroAleatorio é diferente de 0 se for ele pula para o for(){}
+            if (numeroAleatorio != 0) {
+                var achou = false;
+
+                //aqui ele vai percorrer a lista de segredos que gerei se tiver numero igual entao achou = true ai damos um break e ele para de repetir e passa pro if(){}
+                for (var posicao = 0; posicao < segredos.length; posicao++) {
+
+                    if (segredos[posicao] == numeroAleatorio) {
+                        achou = true;
+                        break;
+                    }
+                }
+
+                //aqui ele testa se achou mesmo o numero igual se tiver achado nao e para colocar esse elemento dentro do array de segredos, ai então ele gera outro numero e empurra para a variavel numeroAleatorio
+                if (achou == false) {
+                    segredos.push(numeroAleatorio);
+                    numero++;
+                }
+
+            }
+
+        }
+        //essa instrução está recebendo o retorno da variavel segredos = sorteiaNumeros(3);
+        return segredos;
+    }
+
+    //na variavel segredos, ela recebe o sorteiaNumero() e como parametro a quantidade de numeros que devem ser sorteados
+    var segredos = sorteiaNumeros(3);
+    console.log(segredos);
+
+
+    //document.querySelector pucha funcões do mundo html para o mundo javascript
+    var input = document.querySelector("input");
+    input.focus();
+
+    //a funcao verifica(){} serve para verificar os numeros se estão corretos
+    function verifica() {
+
+        //dentro da funcao verifica, declaramos mais uma variavel chamada achou = false;  para quando encontrarmos o iten que queremos der um ACERTOU!, então vamos la no if(){} do ACERTOU
+        // e antes do break;  colocamos um achou = true
+        var achou = false;
+
+        //no for voce cria uma variavel recebendo 0, coloca a condicao com o um numero a mais de itens, e depois o nome da varialvel ++ para ir adicionando mais um até sair do loop
+        for (var posicao = 0; posicao < 4; posicao++) {
+
+            // o input.value captura o valor que foi digitado no input    
+            if (input.value == segredos[posicao]) {
+
+                alert("Você ACERTOU!");
+                achou = true;
+                break;
+            }
+        }
+        //e depois do if(){} ACERTOU!, fazemos outro if, e dentro dos parenteses colocamos (achou == false), para que se o numero nao for igual ao do array, ele mostre a mensagem voce ERROU!. 
+        if (achou == false) {
+            alert("Você ERROU!");
+        }
+
+        //o input.value = ""; serve para deixar o campo em branco depois que vc digitar e der um click no OK
+        input.value = "";
+
+        //o input.focus(); serve para dar um foco no campo onde vai ser digitado    
+        input.focus();
+
+    }
+
+    //document.querySelector pucha funções do mundo html para o mundo javascript
+    var button = document.querySelector("button");
+
+    //button.onclick = verifica; ele está dizendo que ao clicar no botão ele tenha acesso ao código do verifica, mas sem os parenteses () por que queremos guardar o verifica dentro do
+    //nosso button.onclick, e não executar a função novamente e por isso tem que ser fora da função verifica também
+    button.onclick = verifica;
+
+
+//Aprendemos que podemos saber o tamanho do array através de: declararmos uma variavel com o nome e o array[]  exemplo: var codigos  = ["IDNOCLIP" , "IDDQD", "IDKFA"];
+//Depois usamos codigos.length
+</script>
